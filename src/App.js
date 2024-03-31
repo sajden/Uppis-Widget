@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+// src/App.js
+import React from 'react';
 import './App.css';
+import Carousel from './Carousel'; // Import the Carousel component
 
 function App() {
+  const userId = 'wBpsGC63YpdtAMRwD6Xy1hwtC613'; // Replace with the actual user ID
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* ...other components or HTML you want to include */}
+      <Carousel userId={userId} categoryIndexToShow={1} entryIndexToShow={0} />
+      
+      {/* ...rest of your app */}
     </div>
   );
 }
