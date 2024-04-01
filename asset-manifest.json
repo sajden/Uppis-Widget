@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Uppis-Widget/static/css/main.408155cc.css",
+    "main.js": "/Uppis-Widget/static/js/main.aed0a38a.js",
+    "index.html": "/Uppis-Widget/index.html",
+    "main.408155cc.css.map": "/Uppis-Widget/static/css/main.408155cc.css.map",
+    "main.aed0a38a.js.map": "/Uppis-Widget/static/js/main.aed0a38a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.408155cc.css",
+    "static/js/main.aed0a38a.js"
+  ]
+}
