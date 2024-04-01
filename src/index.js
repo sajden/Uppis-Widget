@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Carousel from './Carousel'; // Importing Carousel directly
+import { register } from 'swiper/element/bundle';
+import './firebaseConfig'; 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// Register Swiper custom elements
+register();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Function to render the Carousel, exposed globally for widget embedding
+window.renderCarousel = (elementId, userId, categoryIndexToShow) => {
+  const root = ReactDOM.createRoot(document.getElementById(elementId));
+  root.render(
+    <React.StrictMode>
+      <Carousel userId={userId} categoryIndexToShow={categoryIndexToShow} />
+    </React.StrictMode>
+  );
+};

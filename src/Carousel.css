@@ -1,93 +1,27 @@
-/* Carousel.css */
-.carousel {
-  position: relative;
-  max-width: 70%; /* Maximum width of the carousel */
-  margin: auto;
-  overflow: hidden;
-  
-}
-.carousel-content {
-  display: flex;
-  justify-content: space-between;
+/* Additional styles for the Swiper component */
+
+.swiper {
+  flex-basis: auto;
+  margin: auto; /* This will center the swiper if it's less than the full width of its container */
+  justify-content: right;
+  align-items: right; /* Center vertically */  
 }
 
-.carousel-description {
-  flex-basis: 30%;
-  width: 20%;
-  text-align: center; /* Center the description text */
-  display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  padding-right: 20px;
-  z-index: 3;
-}
-
-.carousel-media-container {
-  flex-basis: 70%; /* allocate 70% of space to carousel */
-  overflow: hidden; /* to handle the scaling of the active item */
-
-  transition: transform 0.5s ease-out;
-  display: flex;
-  flex-wrap: nowrap; /* Prevents wrapping */
-  justify-content: center; /* Centers items horizontally */
-  align-items: center; /* Aligns items vertically */
-  width: 80%; /* Remainder of the space after description */
-
-}
-
-.carousel-media-item {
-  transition: transform 0.5s ease, margin 0.5s ease;
-  flex: 0 0 auto;
-  width: 200px; /* Base width */
-  margin: 0 20px;
-  /* Ensure the item has space for scaling without affecting layout */
-  position: relative;
-  z-index: 1;
-}
-
-.carousel-media-item.active {
-  position: relative; /* This will ensure the scaled item stays in the flow */
-
-  z-index: 2;
-}
-
-
-.carousel-media-item.active {
-  margin: 0 100px; /* Adds extra space around the active item */
-  transform: scale(1.5); /* Adjust if you're scaling the active item */
-}
-
-.carousel-media-item img,
-.carousel-media-item video {
-  max-width: 100%; /* Max width for media is 100% of the .carousel-media-item */
-  height: 300px; /* Maintain aspect ratio */
-  border-radius: 10px; /* Rounded borders for aesthetics */
-
+/* Styles for each Swiper slide */
+.swiper-slide {
+  display: flex; /* To help center the content inside the slide */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */  
   
 }
 
-.carousel-nav {
-  padding-top: 200px;
-  
+/* Ensure the image or video fills the slide */
+.swiper-slide img,
+.swiper-slide video {
+  width: auto;
+  height: 100%;
+  object-fit: cover; /* Changed to contain to ensure aspect ratio is maintained */
+  border-radius: 15px; /* Add rounded corners */
+  overflow: hidden; /* Ensures the content respects the border radius */
 }
 
-.carousel-nav button {
-  background-color: #fff; /* Button background color */
-  border: 1px solid #ccc; /* Button border */
-  border-radius: 50%; /* Round button edges */
-  padding: 10px 15px; /* Padding inside the buttons */
-  cursor: pointer; /* Cursor to pointer to indicate it's clickable */
-  outline: none; /* Remove outline */
-}
-
-.carousel-nav button:hover,
-.carousel-nav button:focus {
-  background-color: #f0f0f0; /* Slight background color change on hover/focus */
-  border-color: #888; /* Darker border on hover/focus */
-}
-
-.carousel__description {
-  padding-top: 100px;
-  text-align: center;
-  color: rgb(0, 0, 0);
-}

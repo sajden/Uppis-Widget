@@ -1,19 +1,20 @@
-// src/App.js
 import React from 'react';
-import './App.css';
-import Carousel from './Carousel'; // Import the Carousel component
+import ReactDOM from 'react-dom';
+import Carousel from './Carousel'; // Your Carousel component
+import { register } from 'swiper/element/bundle';
+// Ensure Firebase is initialized as needed
+import './firebaseConfig'; 
 
-function App() {
-  const userId = 'wBpsGC63YpdtAMRwD6Xy1hwtC613'; // Replace with the actual user ID
+// register Swiper custom elements
+register();
 
-  return (
-    <div className="App">
-      {/* ...other components or HTML you want to include */}
-      <Carousel userId={userId} categoryIndexToShow={1} entryIndexToShow={0} />
-      
-      {/* ...rest of your app */}
-    </div>
+// Function to render the Carousel, exposed globally
+function renderCarousel(elementId, userId, categoryIndexToShow) {
+  ReactDOM.render(
+    <Carousel userId={userId} categoryIndexToShow={categoryIndexToShow} />,
+    document.getElementById(elementId)
   );
 }
 
-export default App;
+// Expose to the global scope
+window.renderCarousel = renderCarousel;
