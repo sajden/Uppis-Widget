@@ -21,7 +21,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://<Sajden>.github.io/<Uppis-Widget>/",
+  "homepage": "https://sajden.github.io/Uppis-Widget/",
   "eslintConfig": {
     "extends": [
       "react-app",
