@@ -4,6 +4,11 @@ import { firestore } from './firebaseConfig'; // Ensure this path is correct
 import './Carousel.css';
 import { Swiper, SwiperSlide } from 'swiper/react'; // If you're using Swiper 6 or newer
 import 'swiper/swiper-bundle.css'; // Import Swiper styles
+import { Navigation, Pagination } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 
 
@@ -61,52 +66,104 @@ const Carousel = ({ userId, categoryIndexToShow }) => {
       [entryIndex]: swiper.realIndex,
     }));
   };
-
-  const calculateSize = (entryIndex, mediaIndex) => {
-    const baseSize = 200; // Base size for the smallest slide
-    const activeIndex = activeIndices[entryIndex];
-    const slideIndex = mediaIndex; // Since each Swiper is independent, use mediaIndex directly
-    let size = baseSize;
-    if (slideIndex === activeIndex) {
-      size = baseSize * 1.5; // Active slide is largest
-    } else if (Math.abs(slideIndex - activeIndex) === 1) {
-      size = baseSize * 1.2; // Slides next to the active slide are slightly smaller
-    }
-    return {
-      width: `${size}px`,
-      height: `${size}px`,
-      transition: 'transform 0.3s, width 0.3s, height 0.3s',
-    };
-  };
   
 
   return (
     <div className="carousel">
       {entries.map((entry, entryIndex) => (
         <div key={entryIndex} className='entry-swiper'>
-          <h3>{entry.description || 'No description'}</h3>
+          <h3 className='description'>{entry.description || 'No description'}</h3>
           <Swiper
-            slidesPerView={4}
-            spaceBetween={30}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: true, // Continues autoplay after user interaction
+            }}
+            
+            pagination={{ clickable: true }}
+
+            keyboard={{
+              enabled: true,
+              onlyInViewport: true,
+            }}
+            
+            mousewheel={{
+              forceToAxis: true,
+            }}
+            
+            zoom={{ maxRatio: 5 }}
+
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: -20,           // No rotation for simplicity
+              stretch: 0,         // Distance between slides
+              depth: 100,          // Depth value for perspective
+              modifier: 1,         // Effect multiplier
+              slideShadows: false, // Disable slide shadows for flat design
+            }}
             loop={true}
             navigation={true}
             onSlideChange={handleSlideChange(entryIndex)}
+            centeredSlides = {true}
+            centeredSlidesBounds={true}
+            breakpoints={{
+              // when window width is >= 320px
+              480: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                effect: 'slide', // Ensuring standard slide effect without extra movement
+
+              },
+              // when window width is >= 320px
+              490: {
+                slidesPerView: 2,
+                spaceBetween: 10
+              },
+              // when window width is >= 640px
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 20
+              },
+              // when window width is >= 1024px
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 20
+              },
+             
+            }}
+
           >
-            {entry.media && entry.media.map((mediaItem, mediaIndex) => (
-              <SwiperSlide key={mediaIndex}>
-                <div style={calculateSize(entryIndex, mediaIndex)}>
-                  {mediaItem.type === 'image' ? (
-                    <img src={mediaItem.url} alt={mediaItem.description || 'Carousel item'} style={calculateSize(entryIndex, mediaIndex)} />
-                  ) : (
-                    <video controls style={calculateSize(entryIndex, mediaIndex)}>
-                      <source src={mediaItem.url} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  )}
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            {entry.media && entry.media.map((mediaItem, mediaIndex) => {
+          // Function to toggle fullscreen
+          const toggleFullscreen = (event) => {
+            const elem = event.currentTarget; // Get current target element
+            if (!document.fullscreenElement) {
+              if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(err => {
+                  console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+                });
+              }
+            } else {
+              if (document.exitFullscreen) {
+                document.exitFullscreen();
+              }
+            }
+          };
+
+          return (
+            <SwiperSlide key={mediaIndex}>
+              {mediaItem.type === 'image' ? (
+                <img src={mediaItem.url} alt={mediaItem.description || 'Carousel item'} onClick={toggleFullscreen} />
+              ) : (
+                <video controls onClick={toggleFullscreen}>
+                  <source src={mediaItem.url} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </SwiperSlide>
+          );
+        })}
+
+        </Swiper>
         </div>
       ))}
     </div>

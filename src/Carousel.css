@@ -1,27 +1,75 @@
 /* Additional styles for the Swiper component */
-
-.swiper {
-  flex-basis: auto;
-  margin: auto; /* This will center the swiper if it's less than the full width of its container */
-  justify-content: right;
-  align-items: right; /* Center vertically */  
+.carousel {
+  margin:  0 auto;
+  max-width: 1200px;
 }
 
-/* Styles for each Swiper slide */
+.description {
+  text-align: center; /* Centers the text horizontally */
+  margin: 10px 0; /* Adds some space above and below the description */
+  /* Optional: adjust font properties for better visibility */
+  font-size: 1.2rem; /* Adjust based on your design */
+  color: #333; /* Adjust based on your design */
+}
+
+
+.swiper-pagination-bullet {
+  background-color: white !important;
+  opacity: 0.8 !important;
+
+}
+
+.swiper-pagination-bullet-active {
+  background-color: orange !important;
+}
+
+
 .swiper-slide {
-  display: flex; /* To help center the content inside the slide */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */  
+  margin-left: 10px;
   
 }
+
+
+
 
 /* Ensure the image or video fills the slide */
 .swiper-slide img,
 .swiper-slide video {
-  width: auto;
-  height: 100%;
-  object-fit: cover; /* Changed to contain to ensure aspect ratio is maintained */
-  border-radius: 15px; /* Add rounded corners */
-  overflow: hidden; /* Ensures the content respects the border radius */
+  width: 300px; /* Maximum width of image or video */
+  height: 300px; /* Maximum height you want for images and videos */
+  object-fit: cover; /* Cover to ensure the media covers the slide area */
+  border-radius: 15px; /* Optional: For rounded corners */
 }
+
+
+
+@media (max-width: 1024px) {
+  .swiper-slide img,
+  .swiper-slide video {
+    width: 230px; /* Maximum width of image or video */
+  height: 230px; /* Maximum height you want for images and videos */
+  object-fit: cover; /* Cover to ensure the media covers the slide area */
+  border-radius: 15px; /* Optional: For rounded corners */
+  }
+}
+
+@media (max-width: 768px) {
+  .swiper-slide img,
+  .swiper-slide video {
+    width: 200px; /* Maximum width of image or video */
+  height: 200px; /* Maximum height you want for images and videos */
+  object-fit: cover; /* Cover to ensure the media covers the slide area */
+  border-radius: 15px; /* Optional: For rounded corners */
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-slide img,
+  .swiper-slide video {
+  width: 300px; /* Maximum width of image or video */
+  height: 300px; /* Maximum height you want for images and videos */
+  
+  }
+}
+
 
