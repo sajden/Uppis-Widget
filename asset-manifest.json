@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Uppis-Widget/static/css/main.9751c093.css",
+    "main.css": "/Uppis-Widget/static/css/main.fe39927e.css",
     "main.js": "/Uppis-Widget/static/js/main.a1928c1c.js",
     "index.html": "/Uppis-Widget/index.html",
-    "main.9751c093.css.map": "/Uppis-Widget/static/css/main.9751c093.css.map",
+    "main.fe39927e.css.map": "/Uppis-Widget/static/css/main.fe39927e.css.map",
     "main.a1928c1c.js.map": "/Uppis-Widget/static/js/main.a1928c1c.js.map"
   },
   "entrypoints": [
-    "static/css/main.9751c093.css",
+    "static/css/main.fe39927e.css",
     "static/js/main.a1928c1c.js"
   ]
 }
