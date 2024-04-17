@@ -1,7 +1,13 @@
 /* Additional styles for the Swiper component */
+* {
+  position: relative; /* Now z-index will affect this element */
+}
+
 .carousel {
   margin:  0 auto;
   max-width: 1200px;
+  position: relative;
+  background:rgba(255,255,255, 0.6);
 }
 
 .description {
@@ -10,6 +16,8 @@
   /* Optional: adjust font properties for better visibility */
   font-size: 1.2rem; /* Adjust based on your design */
   color: #333; /* Adjust based on your design */
+  z-index: 1;
+  position: relative; /* Now z-index will affect this element */
 }
 
 
